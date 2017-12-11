@@ -1,19 +1,26 @@
 <template>
   <div class="top">
     <transition name="fade">
-      <div class="thumbnail-wrap" v-if="isVisible" @click="isVisible = !isVisible">
+      <div class="thumbnail-wrap" v-if="isVisibleUser" @click="isVisibleUser = !isVisibleUser">
+        <img :src="imgURL" alt="" class="thumbnail">
+      </div>
+    </transition>
+    <transition name="fade">
+      <div class="thumbnail-wrap" v-if="isVisibleSNS" @click="isVisibleSNS = !isVisibleSNS">
         <img :src="imgURL" alt="" class="thumbnail">
       </div>
     </transition>
     <div class="users">
-      <div class="user" v-for="user in users" @click="isVisible = !isVisible">
+      <div class="user" v-for="user in users" @click="isVisibleUser = !isVisibleUser">
         <div class="name">{{user.name}}</div>
       </div>
     </div>
     <footer>
-      <button>Me</button>
-      <button>Online/Offline</button>
-      <button>Sns</button>
+      <nuxt-link to="me">
+        <button>Me</button>
+      </nuxt-link>
+      <button class="online-offline" @click="changeStatus" :style="{backgroundColor: statusColor}">Online/Offline</button>
+      <button @click="isVisibleSNS = !isVisibleSNS">Sns</button>
     </footer>
   </div>
 </template>
@@ -34,7 +41,23 @@
           {name: 'それはもう　太郎'},
           {name: '宝くじ　当て太郎'}
         ],
-        isVisible: false
+        isVisibleUser: false,
+        isVisibleSNS: false,
+        statusColor: '#2c3e50',
+        online: false
+      }
+    },
+    methods: {
+      changeStatus () {
+        if (!this.online) {
+          this.statusColor = '#FD6964'
+          this.online = true
+          return
+        }
+        if (this.online) {
+          this.statusColor = '#2c3e50'
+          this.online = false
+        }
       }
     }
   }
@@ -59,10 +82,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
     opacity: 0
   }
 
@@ -112,6 +138,7 @@
     padding: 15px;
     border: none;
     margin-left: 40px;
+    outline: none;
   }
 
   footer button:first-child {
