@@ -107,7 +107,7 @@
   .user {
     display: flex;
     background: #f8f8f8;
-    border-bottom:solid 3px #fff;
+    border-bottom:solid 2px #fff;
   }
 
   .user:nth-child(3n) {
