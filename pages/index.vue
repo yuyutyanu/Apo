@@ -107,14 +107,11 @@
   .user {
     display: flex;
     background: #f8f8f8;
+    border-bottom:solid 3px #fff;
   }
 
   .user:nth-child(3n) {
-    background: #FD6964;
-  }
-
-  .user:hover {
-    background: gray;
+    background:  #FD6964;
   }
 
   .user .name {
