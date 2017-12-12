@@ -115,10 +115,11 @@
   }
 
   .user .name {
-    font-size: 17px;
+    font-size: 12px;
     font-weight: 800;
     color: #2c3e50;
-    padding: 20px 20px 20px 40px;
+    padding: 18px 18px 18px 30px;
+    width:100%;
   }
 
   footer {
@@ -127,6 +128,9 @@
     width: 100%;
     padding: 25px;
     text-align: center;
+    display: flex;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
   }
 
   footer button {
@@ -134,7 +138,6 @@
     color: #f8f8f8;
     padding: 15px;
     border: none;
-    margin-left: 40px;
     outline: none;
   }
 

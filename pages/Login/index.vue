@@ -69,7 +69,7 @@
   .login-form input {
     width: 100%;
     padding: 5px 10px;
-    font-size: 20px;
+    font-size: 14px;
     margin-bottom: 20px;
     border-radius: 3px;
     border: none;
