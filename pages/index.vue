@@ -189,7 +189,7 @@
     height:50px;
     width:50px;
     border:none;
-    border-radius:100%;
+    border-radius:2px;
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
     transition: background-color ease 0.3s;
   }
