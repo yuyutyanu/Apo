@@ -6,8 +6,7 @@
       </div>
     </transition>
     <transition name="fade">
-      <div class="thumbnail-wrap" v-if="isVisibleSNS" @click="isVisibleSNS = !isVisibleSNS">
-        <img :src="imgURL" alt="" class="thumbnail">
+      <div class="sns-wrap" v-if="isVisibleSNS" @click="isVisibleSNS = !isVisibleSNS">
       </div>
     </transition>
     <div class="users">
@@ -15,13 +14,20 @@
         <div class="name">{{user.name}}</div>
       </div>
     </div>
-    <footer>
+    <div class="btns">
       <nuxt-link to="me">
-        <button>Me</button>
+        <div class="me">
+          <img src="/images/gang.svg" alt="">
+        </div>
       </nuxt-link>
-      <button class="online-offline" @click="changeStatus" :style="{backgroundColor: statusColor}">Online/Offline</button>
-      <button @click="isVisibleSNS = !isVisibleSNS">Sns</button>
-    </footer>
+      <div class="online-offline" @click="changeStatus" :style="{color: statusColor}">
+        <input type="checkbox" id="state" class="state-button">
+        <label for="state"></label>
+      </div>
+      <div class="sns"@click="isVisibleSNS = !isVisibleSNS">
+        <img src="/images/sns.svg" alt="">
+      </div>
+    </div>
   </div>
 </template>
 
@@ -39,18 +45,27 @@
           {name: '中　太郎'},
           {name: 'たたた　太郎'},
           {name: 'それはもう　太郎'},
+          {name: '宝くじ　当て太郎'},
+          {name: '田中　太郎'},
+          {name: '大阪　太郎'},
+          {name: '北海道　太郎'},
+          {name: '東京　太郎'},
+          {name: '子　太郎'},
+          {name: '中　太郎'},
+          {name: 'たたた　太郎'},
+          {name: 'それはもう　太郎'},
           {name: '宝くじ　当て太郎'}
         ],
         isVisibleUser: false,
         isVisibleSNS: false,
-        statusColor: '#2c3e50',
+        statusColor: '',
         online: false
       }
     },
     methods: {
       changeStatus () {
         if (!this.online) {
-          this.statusColor = '#FD6964'
+          this.statusColor = '#336E7B'
           this.online = true
           return
         }
@@ -64,6 +79,10 @@
 </script>
 
 <style scoped>
+  a{
+    text-decoration: none;
+  }
+
   .top {
     height: 100vh;
   }
@@ -73,6 +92,14 @@
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+  }
+  .sns-wrap{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    z-index: 1;
   }
 
   .thumbnail-wrap .thumbnail {
@@ -111,7 +138,7 @@
   }
 
   .user:nth-child(3n) {
-    background:  #FD6964;
+    background:  #336E7B;
   }
 
   .user .name {
@@ -122,26 +149,52 @@
     width:100%;
   }
 
-  footer {
+  .me{
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 25px;
-    text-align: center;
-    display: flex;
-    -webkit-justify-content: space-around; /* Safari */
-    justify-content:         space-around;
+    bottom:30px;
+    width:40px;
+    left:15%;
+    transform:translate(-50%,0);
+    border-bottom:solid 2px;
+    color:#2c3e50;
   }
-
-  footer button {
-    background: #2c3e50;
-    color: #f8f8f8;
-    padding: 15px;
-    border: none;
-    outline: none;
+  .me img{
+    width:100%;
   }
-
-  footer button:first-child {
-    margin: 0;
+  .sns{
+    position: absolute;
+    bottom:30px;
+    left:85%;
+    transform:translate(-50%,0);
+    width:40px;
+    border-bottom:solid 2px;
+    color:#2c3e50;
+  }
+  .sns img{
+    width:100%;
+  }
+  .online-offline{
+    position: absolute;
+    bottom:18px;
+    left:50%;
+    transform:translate(-50%,0);
+  }
+  .online-offline .state-button{
+    display: none;
+  }
+  .online-offline label{
+    position: relative;
+    display: inline-block;
+    top:-10px;
+    height:50px;
+    width:50px;
+    background:#ddd;
+    border:none;
+    border-radius:100%;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    transition: background-color ease 0.3s;
+  }
+  .online-offline #state:checked + label{
+    background:#2c3e50;
   }
 </style>
