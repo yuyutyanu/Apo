@@ -20,11 +20,11 @@
           <img src="/images/gang.svg" alt="">
         </div>
       </nuxt-link>
-      <div class="online-offline" @click="changeStatus" :style="{color: statusColor}">
+      <div class="online-offline">
         <input type="checkbox" id="state" class="state-button">
-        <label for="state"></label>
+        <label for="state" :style="{backgroundColor: statusColor}" @click="changeStatus"></label>
       </div>
-      <div class="sns"@click="isVisibleSNS = !isVisibleSNS">
+      <div class="sns" @click="isVisibleSNS = !isVisibleSNS">
         <img src="/images/sns.svg" alt="">
       </div>
     </div>
@@ -58,7 +58,7 @@
         ],
         isVisibleUser: false,
         isVisibleSNS: false,
-        statusColor: '',
+        statusColor: '#ddd',
         online: false
       }
     },
@@ -70,7 +70,7 @@
           return
         }
         if (this.online) {
-          this.statusColor = '#2c3e50'
+          this.statusColor = '#ddd'
           this.online = false
         }
       }
@@ -175,7 +175,7 @@
   }
   .online-offline{
     position: absolute;
-    bottom:18px;
+    bottom:15px;
     left:50%;
     transform:translate(-50%,0);
   }
@@ -188,7 +188,6 @@
     top:-10px;
     height:50px;
     width:50px;
-    background:#ddd;
     border:none;
     border-radius:100%;
     box-shadow: 0 0 4px rgba(0,0,0,0.4);
