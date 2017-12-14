@@ -15,11 +15,6 @@
       </div>
     </div>
     <div class="btns">
-      <nuxt-link to="me">
-        <div class="me">
-          <img src="/images/gang.svg" alt="">
-        </div>
-      </nuxt-link>
       <div class="online-offline">
         <input type="checkbox" id="state" class="state-button">
         <label for="state" :style="{backgroundColor: statusColor}" @click="changeStatus"></label>
@@ -148,36 +143,36 @@
     padding: 18px 18px 18px 30px;
     width:100%;
   }
-
-  .me{
+  .btns{
+    text-align: center;
     position: absolute;
     bottom:30px;
-    width:40px;
-    left:15%;
-    transform:translate(-50%,0);
-    border-bottom:solid 2px;
-    color:#2c3e50;
-  }
-  .me img{
-    width:100%;
+    left:50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
   }
   .sns{
-    position: absolute;
-    bottom:30px;
-    left:85%;
-    transform:translate(-50%,0);
+    margin-left:10px;
+    margin-top:4px;
     width:40px;
-    border-bottom:solid 2px;
+    vertical-align: top;
+    padding:5px;
+    box-sizing: border-box;
     color:#2c3e50;
+    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    border:none;
+    border-radius:2px;
+    background: #ddd;
+    display: inline-block;
   }
   .sns img{
     width:100%;
   }
   .online-offline{
-    position: absolute;
-    bottom:15px;
-    left:50%;
-    transform:translate(-50%,0);
+    display: inline-block;
   }
   .online-offline .state-button{
     display: none;
@@ -185,7 +180,6 @@
   .online-offline label{
     position: relative;
     display: inline-block;
-    top:-10px;
     height:50px;
     width:50px;
     border:none;
