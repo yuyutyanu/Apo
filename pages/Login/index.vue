@@ -3,16 +3,10 @@
     <div class="login-form-wrapper">
       <div class="login-form">
         <h1 class="login-form__title">Apo</h1>
-        <input type="text" placeholder="id">
-        <input type="password" placeholder="pass">
-        <nuxt-link to="/">
-          <button>LOGIN</button>
-        </nuxt-link>
+        <button>gmail</button>
+        <button>twitter</button>
       </div>
     </div>
-    <nuxt-link to="register">
-      <span class="to-register">新規登録はこちら</span>
-    </nuxt-link>
   </div>
 </template>
 
@@ -64,35 +58,5 @@
     transform: translate(-50%, 0);
     height: 5px;
     background: #2c3e50;
-  }
-
-  .login-form input {
-    width: 100%;
-    padding: 5px 10px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-    color: #2c3e50;
-  }
-
-  .login-form button {
-    display: block;
-    margin-left: auto;
-    background: #2c3e50;
-    color: #f8f8f8;
-    padding: 10px;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-  }
-
-  .to-register {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 14px;
-    color:#2c3e50;
   }
 </style>

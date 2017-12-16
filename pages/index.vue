@@ -4,7 +4,6 @@
       <nuxt-link to="/Timeline">
         <span>Timeline</span>
       </nuxt-link>
-
       <nuxt-link to="/FriendRequest">
         <span>Friend-Request</span>
       </nuxt-link>
@@ -81,7 +80,8 @@
   }
 
   .top {
-    height: 100vh;
+    min-height: 100vh;
+    background: #f8f8f8;
   }
 
   header {
@@ -148,18 +148,12 @@
     padding: 18px;
     width: 100%;
   }
-
+  footer{
+    padding:15px;
+  }
   .btns {
     width: 100%;
     text-align: center;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -ms-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
   }
 
   .reserve {

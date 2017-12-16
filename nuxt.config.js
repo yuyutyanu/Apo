@@ -17,6 +17,37 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  modules: ['@nuxtjs/pwa'],
+  manifest: {
+    name: 'Apo',
+    short_name: 'Apo',
+    title: 'Apo',
+    lang:'jp',
+    icons: [
+      {
+        "src": "/images/box-sample.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+      {
+        "src": "/images/box-sample.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "/images/box-sample.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+      {
+        "src": "/images/box-sample.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      }
+    ],
+    start_url: "/",
+    display: "standalone"
+  },
   /*
   ** Build configuration
   */

@@ -11,3 +11,8 @@ npm-debug.log
 dist
 
 .idea
+firebase-debug.log
+npm-debug.log
+package-lock.json
+
+.DS_Store
