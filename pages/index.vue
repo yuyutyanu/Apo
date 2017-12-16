@@ -1,5 +1,14 @@
 <template>
   <div class="top">
+    <header>
+      <nuxt-link to="timeline">
+        <span>Timeline</span>
+      </nuxt-link>
+
+      <nuxt-link to="friend">
+        <span>Friend</span>
+      </nuxt-link>
+    </header>
     <transition name="fade">
       <div class="thumbnail-wrap" v-if="isVisibleUser" @click="isVisibleUser = !isVisibleUser">
         <img :src="imgURL" alt="" class="thumbnail">
@@ -14,15 +23,20 @@
         <div class="name">{{user.name}}</div>
       </div>
     </div>
-    <div class="btns">
-      <div class="online-offline">
-        <input type="checkbox" id="state" class="state-button">
-        <label for="state" :style="{backgroundColor: statusColor}" @click="changeStatus"></label>
+    <footer>
+      <div class="btns">
+        <div class="reserve" @click="isVisibleSNS = !isVisibleSNS">
+          <img src="/images/clock.svg" alt="">
+        </div>
+        <div class="online-offline">
+          <input type="checkbox" id="state" class="state-button">
+          <label for="state" :style="style" @click="changeStyle"></label>
+        </div>
+        <div class="sns" @click="isVisibleSNS = !isVisibleSNS">
+          <img src="/images/sns.svg" alt="">
+        </div>
       </div>
-      <div class="sns" @click="isVisibleSNS = !isVisibleSNS">
-        <img src="/images/sns.svg" alt="">
-      </div>
-    </div>
+    </footer>
   </div>
 </template>
 
@@ -53,19 +67,21 @@
         ],
         isVisibleUser: false,
         isVisibleSNS: false,
-        statusColor: '#ddd',
+        style: {
+          backgroundColor: '#ddd'
+        },
         online: false
       }
     },
     methods: {
-      changeStatus () {
+      changeStyle () {
         if (!this.online) {
-          this.statusColor = '#336E7B'
+          this.style.backgroundColor = '#336E7B'
           this.online = true
           return
         }
         if (this.online) {
-          this.statusColor = '#ddd'
+          this.style.backgroundColor = '#ddd'
           this.online = false
         }
       }
@@ -74,12 +90,23 @@
 </script>
 
 <style scoped>
-  a{
+  a {
     text-decoration: none;
+    color: #f8f8f8;
   }
 
   .top {
     height: 100vh;
+  }
+
+  header {
+    padding: 10px;
+    width: 100%;
+    background: #2c3e50;
+  }
+
+  header span {
+    margin-left: 10px;
   }
 
   .thumbnail-wrap {
@@ -89,7 +116,8 @@
     background: rgba(255, 255, 255, 0.6);
     z-index: 1;
   }
-  .sns-wrap{
+
+  .sns-wrap {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -114,11 +142,6 @@
     opacity: 0
   }
 
-  header {
-    width: 100%;
-    padding: 15px;
-  }
-
   .users {
     width: 100%;
     height: 80vh;
@@ -129,11 +152,15 @@
   .user {
     display: flex;
     background: #f8f8f8;
-    border-bottom:solid 2px #fff;
+    border-bottom: solid 2px #fff;
   }
 
   .user:nth-child(3n) {
-    background:  #336E7B;
+    background: #336E7B;
+  }
+
+  .user:nth-child(3n) .name {
+    color: #f8f8f8;
   }
 
   .user .name {
@@ -141,53 +168,83 @@
     font-weight: 800;
     color: #2c3e50;
     padding: 18px 18px 18px 30px;
-    width:100%;
+    width: 100%;
   }
-  .btns{
+
+  .btns {
+    width: 100%;
     text-align: center;
     position: absolute;
-    bottom:30px;
-    left:50%;
-    -webkit-transform: translate(-50%,0);
-    -moz-transform: translate(-50%,0);
-    -ms-transform: translate(-50%,0);
-    -o-transform: translate(-50%,0);
-    transform: translate(-50%,0);
+    bottom: 10px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
-  .sns{
-    margin-left:10px;
-    margin-top:4px;
-    width:40px;
+
+  .reserve {
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 40px;
     vertical-align: top;
-    padding:5px;
+    padding: 5px;
     box-sizing: border-box;
-    color:#2c3e50;
-    box-shadow: 0 0 4px rgba(0,0,0,0.4);
-    border:none;
-    border-radius:2px;
+    color: #2c3e50;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 2px;
     background: #ddd;
     display: inline-block;
   }
-  .sns img{
-    width:100%;
+
+  .reserve img {
+    width: 100%;
+    vertical-align: middle;
   }
-  .online-offline{
+
+  .online-offline {
+    margin-left: 10px;
     display: inline-block;
   }
-  .online-offline .state-button{
+
+  .online-offline .state-button {
     display: none;
   }
-  .online-offline label{
+
+  .online-offline label {
     position: relative;
     display: inline-block;
-    height:50px;
-    width:50px;
-    border:none;
-    border-radius:2px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.4);
+    height: 60px;
+    width: 60px;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
     transition: background-color ease 0.3s;
   }
-  .online-offline #state:checked + label{
-    background:#2c3e50;
+
+  .online-offline #state:checked + label {
+    background: #2c3e50;
+  }
+
+  .sns {
+    margin-left: 10px;
+    margin-top: 8px;
+    width: 40px;
+    vertical-align: top;
+    padding: 5px;
+    box-sizing: border-box;
+    color: #2c3e50;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 2px;
+    background: #ddd;
+    display: inline-block;
+  }
+
+  .sns img {
+    width: 100%;
+    vertical-align: middle;
   }
 </style>
