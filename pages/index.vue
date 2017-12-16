@@ -113,7 +113,7 @@
 
   .users {
     width: 100%;
-    height: 80vh;
+    height: 75vh;
     margin: 0 auto;
     overflow: auto;
   }

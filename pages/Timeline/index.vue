@@ -50,6 +50,8 @@
     margin-bottom: 10px;
     font-size: 14px;
     color: #2c3e50;
+    border-bottom: solid 1px #2c3e50;
+    padding:5px 0px
   }
   li:last-child{
     margin:0;
