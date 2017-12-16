@@ -4,17 +4,19 @@
       <nuxt-link to="/">
         <span>Home</span>
       </nuxt-link>
-      <nuxt-link to="friend">
-        <span>Friend</span>
+      <nuxt-link to="/FriendRequest">
+        <span>Friend-Request</span>
       </nuxt-link>
     </header>
     <div class="contents">
+      <input type="text" class="search" placeholder="ユーザ検索">or
+      <button class="me">Me</button>
       <ul>
         <li v-for="i in 5">
-          しゃんてぃさんが〇月〇日〇時〇から〇月〇日〇時まで<strong>取り込み中</strong>に設定しました。
+          しゃんてぃさんが<strong>〇月〇日〇時</strong>から<strong>〇月〇日〇時</strong>まで<strong style="color:#e74c3c">取り込み中</strong>の予約をしました。
         </li>
         <li v-for="i in 5">
-          ちゃぬさんが〇月〇日〇時〇から〇月〇日〇時まで<strong>時間空いてるよ</strong>に設定しました。
+          ちゃぬさんが<strong>〇月〇日〇時〇</strong>から<strong>〇月〇日〇時</strong>まで<strong style="color:#16a085">時間空いてるよ</strong>の予約をしました。
         </li>
       </ul>
     </div>
@@ -58,5 +60,24 @@
   }
   .contents{
     padding:20px;
+  }
+  .search{
+    font-size:12px;
+    padding:5px;
+    border:none;
+    border-radius:3px;
+    margin-bottom:10px;
+    margin-right:10px;
+  }
+  .me{
+    border:none;
+    border-radius:3px;
+    background:#ddd;
+    width:40px;
+    height: 23px;
+    margin-left:10px;
+    color:#2c3e50;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
   }
 </style>

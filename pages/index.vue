@@ -1,25 +1,23 @@
 <template>
   <div class="top">
     <header>
-      <nuxt-link to="timeline">
+      <nuxt-link to="/Timeline">
         <span>Timeline</span>
       </nuxt-link>
 
-      <nuxt-link to="friend">
-        <span>Friend</span>
+      <nuxt-link to="/FriendRequest">
+        <span>Friend-Request</span>
       </nuxt-link>
     </header>
-    <transition name="fade">
-      <div class="thumbnail-wrap" v-if="isVisibleUser" @click="isVisibleUser = !isVisibleUser">
-        <img :src="imgURL" alt="" class="thumbnail">
-      </div>
-    </transition>
     <transition name="fade">
       <div class="sns-wrap" v-if="isVisibleSNS" @click="isVisibleSNS = !isVisibleSNS">
       </div>
     </transition>
     <div class="users">
       <div class="user" v-for="user in users" @click="isVisibleUser = !isVisibleUser">
+        <div class="thumbnail">
+          <img :src="user.thumbnail" alt="">
+        </div>
         <div class="name">{{user.name}}</div>
       </div>
     </div>
@@ -41,30 +39,17 @@
 </template>
 
 <script>
+  import faker from 'faker'
+  var users = []
+  for (var i = 0; i < 20; i++) {
+    users.push({name: faker.name.findName(), thumbnail: faker.image.avatar()})
+  }
+  console.log(users)
   export default{
     data () {
       return {
         imgURL: 'https://avatars0.githubusercontent.com/u/17114906?s=460&v=4',
-        users: [
-          {name: '田中　太郎'},
-          {name: '大阪　太郎'},
-          {name: '北海道　太郎'},
-          {name: '東京　太郎'},
-          {name: '子　太郎'},
-          {name: '中　太郎'},
-          {name: 'たたた　太郎'},
-          {name: 'それはもう　太郎'},
-          {name: '宝くじ　当て太郎'},
-          {name: '田中　太郎'},
-          {name: '大阪　太郎'},
-          {name: '北海道　太郎'},
-          {name: '東京　太郎'},
-          {name: '子　太郎'},
-          {name: '中　太郎'},
-          {name: 'たたた　太郎'},
-          {name: 'それはもう　太郎'},
-          {name: '宝くじ　当て太郎'}
-        ],
+        users: users,
         isVisibleUser: false,
         isVisibleSNS: false,
         style: {
@@ -109,28 +94,12 @@
     margin-left: 10px;
   }
 
-  .thumbnail-wrap {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.6);
-    z-index: 1;
-  }
-
   .sns-wrap {
     position: fixed;
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.6);
     z-index: 1;
-  }
-
-  .thumbnail-wrap .thumbnail {
-    position: absolute;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .fade-enter-active, .fade-leave-active {
@@ -152,22 +121,31 @@
   .user {
     display: flex;
     background: #f8f8f8;
-    border-bottom: solid 2px #fff;
   }
-
-  .user:nth-child(3n) {
+  .user:nth-child(3n){
     background: #336E7B;
   }
-
   .user:nth-child(3n) .name {
     color: #f8f8f8;
   }
+  .user .thumbnail{
+    display: inline-block;
+    height:54px;
+    min-width:54px;
+    max-width:54px;
+    border-radius:3px;
+    background-size:100%;
+  }
+  .user .thumbnail img{
+    width:100%;
+  }
 
   .user .name {
+    display: inline-block;
     font-size: 12px;
     font-weight: 800;
     color: #2c3e50;
-    padding: 18px 18px 18px 30px;
+    padding: 18px;
     width: 100%;
   }
 
