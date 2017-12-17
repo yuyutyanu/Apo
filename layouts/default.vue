@@ -24,4 +24,11 @@ html {
   min-width:320px;
   background: #f8f8f8;
 }
+@media (min-width:480px) {
+  .container{
+    max-width:800px;
+    margin:0 auto;
+  }
+}
+
 </style>

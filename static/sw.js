@@ -1,46 +1,48 @@
 importScripts('/_nuxt/workbox.476439e0.js')
 
 const workboxSW = new self.WorkboxSW({
-  'cacheId': 'apo',
-  'clientsClaim': true,
-  'directoryIndex': '/'
+  "cacheId": "apo",
+  "clientsClaim": true,
+  "directoryIndex": "/"
 })
 
 workboxSW.precache([
   {
-    'url': '/_nuxt/app.26a50d4fa5e9fd626ce1.js',
-    'revision': '17f70cd5f8f5a7d3c7dbe76d1f1f0dff'
+    "url": "/_nuxt/app.ac54067dfce390c2345b.js",
+    "revision": "156307040705f9be6fdec7e9fb60da6b"
   },
   {
-    'url': '/_nuxt/common.018e387cb9e6a04740e4.js',
-    'revision': '087213d0b678c16f2d4cad02ee6ff281'
+    "url": "/_nuxt/common.b0c7ee913b8d9de7e701.js",
+    "revision": "f0c308851f08fa1cd0c7e081a17b9d0c"
   },
   {
-    'url': '/_nuxt/layouts/default.91dcf4527c84af434d7e.js',
-    'revision': '915348b4b37fd1fffe09e954590f1aef'
+    "url": "/_nuxt/layouts/default.91dcf4527c84af434d7e.js",
+    "revision": "915348b4b37fd1fffe09e954590f1aef"
   },
   {
-    'url': '/_nuxt/manifest.8c3fe2c7a984483b1dbe.js',
-    'revision': 'ff4ab2f658d3b7c989bfb60b02290f76'
+    "url": "/_nuxt/manifest.46ec423c40fd340bb7b2.js",
+    "revision": "618ea28c41f528a094f0de590ed525ba"
   },
   {
-    'url': '/_nuxt/pages/FriendRequest/index.8e20b2e14845eaaddd36.js',
-    'revision': 'e213370ba1fb89306515f70ad9888dc7'
+    "url": "/_nuxt/pages/FriendRequest/index.8e20b2e14845eaaddd36.js",
+    "revision": "e213370ba1fb89306515f70ad9888dc7"
   },
   {
-    'url': '/_nuxt/pages/index.3152a8702299e702ee9e.js',
-    'revision': '787caaa75d48959d539a4fa794a1fa61'
+    "url": "/_nuxt/pages/index.b3e7f77bc0ef0e14f793.js",
+    "revision": "e5d46bc8b4c6a8a04e2139f593b47684"
   },
   {
-    'url': '/_nuxt/pages/Login/index.4791713f84209ea5e6bf.js',
-    'revision': 'ce66dd86bd893b9d836f7c15d5b0b265'
+    "url": "/_nuxt/pages/Login/index.c88609f78d2c9138acc4.js",
+    "revision": "dc421f160db116514b3bbe3d596f8ba8"
   },
   {
-    'url': '/_nuxt/pages/Timeline/index.1a71cade2f7d1cbb4a3e.js',
-    'revision': 'fdded39405b11a38dbaab7ffd7081533'
+    "url": "/_nuxt/pages/Timeline/index.1a71cade2f7d1cbb4a3e.js",
+    "revision": "fdded39405b11a38dbaab7ffd7081533"
   }
 ])
+
 
 workboxSW.router.registerRoute(new RegExp('/_nuxt/.*'), workboxSW.strategies.cacheFirst({}), 'GET')
 
 workboxSW.router.registerRoute(new RegExp('/.*'), workboxSW.strategies.networkFirst({}), 'GET')
+
