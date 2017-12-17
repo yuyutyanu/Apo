@@ -39,12 +39,26 @@
 
 <script>
   import faker from 'faker'
+  import * as firebase from 'firebase'
+
   var users = []
   for (var i = 0; i < 20; i++) {
     users.push({name: faker.name.findName(), thumbnail: faker.image.avatar()})
   }
-  console.log(users)
   export default{
+    created () {
+      firebase.auth().getRedirectResult().then(function (result) {
+        if (result.credential) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken
+        }
+        // The signed-in user info.
+        var user = result.user
+        console.log(token, user)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     data () {
       return {
         imgURL: 'https://avatars0.githubusercontent.com/u/17114906?s=460&v=4',
@@ -122,22 +136,26 @@
     display: flex;
     background: #f8f8f8;
   }
-  .user:nth-child(3n){
+
+  .user:nth-child(3n) {
     background: #336E7B;
   }
+
   .user:nth-child(3n) .name {
     color: #f8f8f8;
   }
-  .user .thumbnail{
+
+  .user .thumbnail {
     display: inline-block;
-    height:54px;
-    min-width:54px;
-    max-width:54px;
-    border-radius:3px;
-    background-size:100%;
+    height: 54px;
+    min-width: 54px;
+    max-width: 54px;
+    border-radius: 3px;
+    background-size: 100%;
   }
-  .user .thumbnail img{
-    width:100%;
+
+  .user .thumbnail img {
+    width: 100%;
   }
 
   .user .name {
@@ -148,9 +166,11 @@
     padding: 18px;
     width: 100%;
   }
-  footer{
-    padding:15px;
+
+  footer {
+    padding: 15px;
   }
+
   .btns {
     width: 100%;
     text-align: center;

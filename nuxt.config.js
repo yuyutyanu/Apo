@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   /*
   ** Headers of the page
@@ -22,36 +24,49 @@ module.exports = {
     name: 'Apo',
     short_name: 'Apo',
     title: 'Apo',
-    lang:'jp',
+    lang: 'jp',
     icons: [
       {
-        "src": "/images/box-sample.png",
-        "type": "image/png",
-        "sizes": "48x48"
+        'src': '/images/box-sample.png',
+        'type': 'image/png',
+        'sizes': '48x48'
       },
       {
-        "src": "/images/box-sample.png",
-        "type": "image/png",
-        "sizes": "96x96"
+        'src': '/images/box-sample.png',
+        'type': 'image/png',
+        'sizes': '96x96'
       },
       {
-        "src": "/images/box-sample.png",
-        "type": "image/png",
-        "sizes": "144x144"
+        'src': '/images/box-sample.png',
+        'type': 'image/png',
+        'sizes': '144x144'
       },
       {
-        "src": "/images/box-sample.png",
-        "type": "image/png",
-        "sizes": "192x192"
+        'src': '/images/box-sample.png',
+        'type': 'image/png',
+        'sizes': '192x192'
       }
     ],
-    start_url: "/",
-    display: "standalone"
+    start_url: '/',
+    display: 'standalone'
+  },
+  plugins: ['~/plugins/firebase'],
+  router: {
+    middleware: 'auth'
+  },
+  env: {
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    databaseURL: process.env.databaseURL,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId
   },
   /*
   ** Build configuration
   */
   build: {
+    vendor: ['firebase'],
     /*
     ** Run ESLint on save
     */
