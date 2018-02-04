@@ -1,5 +1,8 @@
 <template>
   <div class="timeline">
+    <app-header>
+
+    </app-header>
     <div class="contents">
       <div class="search">
         <input type="text" class="search-user" placeholder="ユーザ検索">or
@@ -18,7 +21,12 @@
 </template>
 
 <script>
-  export default {}
+  import AppHeader from '~/components/header.vue'
+  export default{
+    components: {
+      AppHeader
+    }
+  }
 </script>
 
 <style scoped>

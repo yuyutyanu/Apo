@@ -4,6 +4,7 @@
       <div class="sns-wrap container" v-if="isVisibleSNS" @click="isVisibleSNS = !isVisibleSNS">
       </div>
     </transition>
+    <app-header></app-header>
     <div class="users">
       <p class="user-title">あなた</p>
       <div class="me">
@@ -23,6 +24,7 @@
   import * as firebase from 'firebase'
   import AppUser from '~/components/user.vue'
   import HomeFooter from '~/components/home-footer.vue'
+  import AppHeader from '~/components/header.vue'
 
   var users = []
   for (var i = 0; i < 20; i++) {
@@ -31,6 +33,7 @@
   export default{
     components: {
       AppUser,
+      AppHeader,
       HomeFooter
     },
     created () {

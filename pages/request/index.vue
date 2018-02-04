@@ -1,6 +1,6 @@
 <template>
   <div class="friend">
-
+    <app-header></app-header>
     <div class="contents">
       <div class="qr-wrap">
         <p>あなたのQRコード</p>
@@ -32,11 +32,15 @@
 <script>
   import faker from 'faker'
   import QRCode from 'qrcode'
+  import AppHeader from '~/components/header.vue'
   var users = []
   for (var i = 0; i < 5; i++) {
     users.push({name: faker.name.findName(), thumbnail: faker.image.avatar()})
   }
   export default{
+    components: {
+      AppHeader
+    },
     data () {
       return {
         users: users
