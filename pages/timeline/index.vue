@@ -1,13 +1,5 @@
 <template>
   <div class="timeline">
-    <header>
-      <nuxt-link to="/">
-        <span>Home</span>
-      </nuxt-link>
-      <nuxt-link to="/FriendRequest">
-        <span>Friend-Request</span>
-      </nuxt-link>
-    </header>
     <div class="contents">
       <div class="search">
         <input type="text" class="search-user" placeholder="ユーザ検索">or
@@ -48,23 +40,13 @@
   li {
     list-style: none;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: 12px;
     color: #2c3e50;
     border-bottom: solid 1px #2c3e50;
     padding:5px 0px
   }
   li:last-child{
     margin:0;
-  }
-
-  header {
-    padding: 10px;
-    width: 100%;
-    background: #2c3e50;
-  }
-
-  header span {
-    margin-left: 10px;
   }
 
   .contents {

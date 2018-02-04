@@ -1,8 +1,17 @@
 <template>
   <div class="container">
+    <app-header></app-header>
     <nuxt/>
   </div>
 </template>
+<script>
+  import AppHeader from '~/components/header.vue'
+  export default{
+    components: {
+      AppHeader
+    }
+  }
+</script>
 
 <style>
 html {

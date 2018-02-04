@@ -1,20 +1,10 @@
 <template>
   <div class="friend">
-    <header>
-      <nuxt-link to="/">
-      <span>
-        Home
-      </span>
-      </nuxt-link>
-      <nuxt-link to="/Timeline">
-        <span>Timeline</span>
-      </nuxt-link>
-    </header>
+
     <div class="contents">
       <div class="qr-wrap">
         <p>あなたのQRコード</p>
-        <div class="your-qrcode"></div>
-        <p>QRコードを読み取る</p>
+        <canvas class="your-qrcode" id="your-qrcode"></canvas>
       </div>
       <div class="open-close">
         <span>登録申請がきています。</span>
@@ -41,8 +31,9 @@
 
 <script>
   import faker from 'faker'
+  import QRCode from 'qrcode'
   var users = []
-  for (var i = 0; i < 14; i++) {
+  for (var i = 0; i < 5; i++) {
     users.push({name: faker.name.findName(), thumbnail: faker.image.avatar()})
   }
   export default{
@@ -50,6 +41,13 @@
       return {
         users: users
       }
+    },
+    mounted () {
+      const canvas = document.getElementById('your-qrcode')
+      QRCode.toCanvas(canvas, 'sample text', function (error) {
+        if (error) console.error(error)
+        console.log('success!')
+      })
     }
   }
 </script>
@@ -60,16 +58,6 @@
     width: 100%;
     background: #f8f8f8;
     color:#2c3e50;
-  }
-
-  header {
-    padding: 10px;
-    width: 100%;
-    background: #2c3e50;
-  }
-
-  header span {
-    margin-left: 10px;
   }
 
   a {
@@ -100,8 +88,6 @@
   .your-qrcode {
     margin: 0 auto;
     width: 50%;
-    padding: 100px;
-    background: black;
   }
 
   .open-close {
